@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ${project.groupId}:${project.artifactId}:${classVersionInsert} -->
+<!DOCTYPE hibernate-configuration PUBLIC
+  "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd" [
+  <!ENTITY mapping_resources SYSTEM "classpath://mapping_resources.inc.xml">
+] >
+ <!-- This file only exists to generate the derby script -->
+<hibernate-configuration>
+  <session-factory>
+    <!-- -->
+    <property name="hibernate.format_sql">false</property>
+    <property name="hibernate.hbm2ddl.auto">create-drop</property>
+    <property name="hibernate.jdbc.use_streams_for_binary">true</property>
+    <property name="hibernate.interceptor">de.icongmbh.org.hibernate.RevisionSecureInterceptor</property>
+    <property name="hibernate.c3p0.max_size">20</property>
+    <property name="hibernate.c3p0.idle_test_period">3000</property>
+    <property name="hibernate.dialect">de.icongmbh.org.hibernate.dialect.HSQLDialect</property>
+    <property name="hibernate.ejb.event.flush-entity">de.icongmbh.org.hibernate.event.MarkAsDeletedEventListener</property>
+    <property name="hibernate.c3p0.min_size">5</property>
+    <property name="hibernate.ejb.event.pre-update">de.icongmbh.org.hibernate.event.KeepHistoryEventListener,de.icongmbh.org.hibernate.event.SetTaskUIDToTicketListener</property>
+    <property name="hibernate.connection.url">jdbc:hsqldb:mem:TEST_DOPE_FLOW_DATABASE</property>
+	<property name="hibernate.show_sql">false</property>
+	<property name="hibernate.generate_statistics">false</property>
+	<property name="hibernate.order_updates">true</property>
+	<property name="hibernate.ejb.event.pre-delete">de.icongmbh.org.hibernate.event.MarkAsDeletedEventListener</property>
+	<property name="hibernate.current_session_context_class">thread</property>
+	<property name="hibernate.jdbc.batch_size">0</property>
+	<property name="hibernate.use_custom_identifier_generator_factory">true</property>
+	<property name="hibernate.connection.ClientUser">DOPE/Flow Core - TEST</property>
+	<property name="hibernate.connection.driver_class">org.hsqldb.jdbc.JDBCDriver</property>
+	<property name="hibernate.use_sql_comments">true</property>
+	<property name="hibernate.ejb.event.post-load">de.icongmbh.org.hibernate.event.ReleaseDateNameInitializeListener</property>
+	<property name="hibernate.c3p0.max_statements">50</property>
+	<property name="hibernate.connection.ApplicationName">DOPE/Flow Hibernate DBM</property>
+	<property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+	<property name="hibernate.mapping.resource">de/icongmbh/dope/flow/bo/BaseTypes.hbm.xml</property>
+	<property name="hibernate.ejb.event.pre-insert">de.icongmbh.org.hibernate.event.SetTaskUIDToTicketListener</property>
+	<property name="hibernate.c3p0.timeout">300</property>
+	<property name="hibernate.connection.pool_size">2</property>
+	<property name="hibernate.default_batch_fetch_size">16</property>
+	
+    <!-- register mapping - include via ENTITY import above -->
+    &mapping_resources;
+  </session-factory>
+</hibernate-configuration>

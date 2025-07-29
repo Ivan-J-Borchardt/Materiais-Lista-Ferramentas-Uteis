@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ###BUILDINFORMATION### -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="flow_db2LuW" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    <property name="driverClass" value="com.ibm.db2.jcc.DB2Driver" />
+    <property name="jdbcUrl" value="jdbc:db2://icw2k19hv06.icongmbh.de:50000/FLOWDB:currentSchema=DOPIXFLOWIT;clientProgramName=DOPiX/Flow;fullyMaterializeLobData=true;fullyMaterializeInputStreams=true;progressiveStreaming=2;progresssiveLocators=2;deferPrepares=false;" />
+    <property name="user" value="flowapp" />
+    <property name="password" value="$dope2005" />
+    <property name="minPoolSize" value="3" />
+    <property name="maxPoolSize" value="15" />
+    <property name="maxIdleTime" value="100" />
+    <property name="maxConnectionAge" value="100" />
+  </bean>
+  
+  <bean id="flow_db2zOS" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    <property name="driverClass" value="com.ibm.db2.jcc.DB2Driver" />
+    <property name="jdbcUrl" value="jdbc:db2://db-db2zos.icongmbh.de:9810/DBCGLU1:currentSchema=DOPIXFLOWIT;clientProgramName=DOPiX/FLOW;" />
+    <property name="user" value="ICONJDBC" />
+    <property name="password" value="icon" />
+  </bean>
+  
+  <bean id="flow_mssql" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    <property name="jdbcUrl" value="jdbc:sqlserver://db-mssql2016.icongmbh.de:1433;applicationName=DOPiX/Flow;SelectMethod=cursor;databasename=dopixFlowDb;" />
+    <property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+    <property name="user" value="FLOWT" />
+    <property name="password" value="dope2005" />
+  </bean>
+  
+  <bean id="flow_oracle" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    <property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+    <property name="jdbcUrl"
+      value="jdbc:oracle:thin:@db-oracle2.icongmbh.de:1521/pdborca" />
+    <property name="user" value="FLOWT" />
+    <property name="password" value="dope" />
+  </bean>
+</beans>
